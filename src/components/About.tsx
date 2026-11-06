@@ -14,6 +14,9 @@ import {
   Target,
   Handshake,
   Crown,
+  Phone,
+  MessageCircle,
+  Mail,
 } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 
@@ -65,7 +68,7 @@ export const About: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Split Screen Top About Row */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Portrait with Dream Create Inspire */}
+          {/* Left Column: Creative Studio Identity & Direct Connect (Second photo removed as requested) */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
             {/* Handwritten Floating Text */}
             <div className="absolute -top-6 -left-4 z-20 hidden sm:block">
@@ -76,27 +79,119 @@ export const About: React.FC = () => {
               </p>
             </div>
 
-            {/* Glowing Frame */}
-            <div className="relative w-full max-w-[390px] aspect-[4/5] rounded-3xl p-[1.5px] bg-gradient-to-tr from-purple-500 via-indigo-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.35),0_0_70px_rgba(56,189,248,0.2)]">
-              <div className="w-full h-full rounded-[22px] overflow-hidden relative bg-[#050509]">
-                <img
-                  src={data.brand.aboutPortrait}
-                  alt="Athif Abdul Azeez"
-                  className="w-full h-full object-cover object-top filter contrast-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050509] via-transparent to-transparent opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-transparent to-cyan-500/20 pointer-events-none" />
+            {/* Glowing Studio Identity Card */}
+            <div className="relative w-full max-w-[400px] rounded-3xl p-[1.5px] bg-gradient-to-tr from-purple-500 via-indigo-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.35),0_0_70px_rgba(56,189,248,0.2)]">
+              <div className="w-full h-full rounded-[22px] overflow-hidden relative bg-[#070714] p-6 sm:p-7 flex flex-col justify-between">
+                {/* Background neon ambient gradients */}
+                <div className="absolute -top-12 -right-12 w-48 h-48 bg-purple-600/20 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none" />
 
-                <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-[#090914]/85 border border-white/10 backdrop-blur-md">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-xs font-bold text-white">Athif Abdul Azeez</p>
-                      <p className="text-[10px] text-gray-400">Founder & Creative Director</p>
-                    </div>
+                {/* Top Badge & Studio Monogram */}
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-[10px] font-bold tracking-wider uppercase">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                      AVAILABLE FOR COMMISSIONS
+                    </span>
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-semibold border border-purple-500/30">
                       Studio Lead
                     </span>
                   </div>
+
+                  {/* Iconic Glowing Studio Emblem */}
+                  <div className="my-3 flex items-center gap-3.5">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-600 via-indigo-600 to-cyan-500 p-[2px] shadow-[0_0_25px_rgba(168,85,247,0.5)] shrink-0">
+                      <div className="w-full h-full bg-[#05050e] rounded-[14px] flex items-center justify-center">
+                        <span className="font-black text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-300 to-cyan-400">
+                          A
+                        </span>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-black text-white tracking-wide">
+                        ATHIF ABDUL AZEEZ
+                      </h3>
+                      <p className="text-[11px] text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 font-semibold uppercase tracking-wider">
+                        Creative Studio Visual Artist
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-gray-400 leading-relaxed mt-2">
+                    Visual storyteller specializing in cinematic reel editing, bold poster design, and futuristic motion aesthetics.
+                  </p>
+                </div>
+
+                {/* Direct Phone & WhatsApp Instant Connect */}
+                <div className="mt-5 pt-4 border-t border-white/10 space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                      DIRECT CONTACT
+                    </span>
+                    <span className="text-[10px] text-cyan-400 font-medium">Quick Reply</span>
+                  </div>
+
+                  <a
+                    href={`tel:${data.contactInfo.phone || '+918113014526'}`}
+                    className="flex items-center justify-between p-2.5 rounded-xl bg-purple-950/30 border border-purple-500/30 hover:border-purple-400 hover:bg-purple-900/30 transition-all group"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-300 group-hover:scale-110 transition-transform">
+                        <Phone className="w-3.5 h-3.5 text-purple-400" />
+                      </div>
+                      <div>
+                        <p className="text-[9px] text-gray-400">Direct Phone Call</p>
+                        <p className="text-xs font-bold text-white group-hover:text-purple-300 transition-colors">
+                          {data.contactInfo.phone || '8113014526'}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-semibold text-purple-300 px-2 py-0.5 rounded bg-purple-500/20">
+                      Call Now
+                    </span>
+                  </a>
+
+                  <a
+                    href={`https://wa.me/${(data.contactInfo.phone || '8113014526').replace(/\D/g, '')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-2.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 hover:border-emerald-400 hover:bg-emerald-900/30 transition-all group"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-300 group-hover:scale-110 transition-transform">
+                        <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                      </div>
+                      <div>
+                        <p className="text-[9px] text-gray-400">WhatsApp Chat</p>
+                        <p className="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors">
+                          Instant Chat
+                        </p>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-semibold text-emerald-300 px-2 py-0.5 rounded bg-emerald-500/20">
+                      WhatsApp →
+                    </span>
+                  </a>
+
+                  <a
+                    href={`mailto:${data.contactInfo.email}`}
+                    className="flex items-center justify-between p-2.5 rounded-xl bg-cyan-950/20 border border-cyan-500/20 hover:border-cyan-400 hover:bg-cyan-900/30 transition-all group"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-300 group-hover:scale-110 transition-transform">
+                        <Mail className="w-3.5 h-3.5 text-cyan-400" />
+                      </div>
+                      <div>
+                        <p className="text-[9px] text-gray-400">Direct Email</p>
+                        <p className="text-xs font-bold text-white group-hover:text-cyan-300 transition-colors truncate max-w-[160px]">
+                          {data.contactInfo.email}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-semibold text-cyan-300 px-2 py-0.5 rounded bg-cyan-500/20">
+                      Email
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>

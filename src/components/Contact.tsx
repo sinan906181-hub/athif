@@ -13,6 +13,8 @@ import {
   Youtube,
   Instagram,
   CheckCircle2,
+  Phone,
+  MessageCircle,
 } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 
@@ -107,21 +109,24 @@ export const Contact: React.FC = () => {
                 together.
               </p>
 
-              {/* 4 Value Badges (2x2 grid) */}
+              {/* 4 Value Badges (2x2 grid) - Upgraded Model & Style */}
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {data.contactValues.map((card, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-2xl bg-[#090914]/80 border border-white/10 backdrop-blur-md flex items-start gap-3.5 hover:border-purple-500/40 transition-all group"
+                    className="relative group p-4 rounded-2xl bg-[#08081a]/90 border border-white/10 backdrop-blur-xl flex items-start gap-3.5 hover:border-cyan-400/50 hover:shadow-[0_0_25px_rgba(56,189,248,0.25)] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-purple-950/40 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    {/* Top edge neon accent bar */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500 via-indigo-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-purple-950/70 to-indigo-950/60 border border-purple-500/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-cyan-400/50 transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)]">
                       {getValueIcon(card.iconName)}
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      <h3 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1.5">
                         {card.title}
                       </h3>
-                      <p className="text-[11px] text-gray-400 mt-0.5 leading-snug">
+                      <p className="text-[11px] text-gray-400 mt-1 leading-relaxed">
                         {card.description}
                       </p>
                     </div>
@@ -173,10 +178,30 @@ export const Contact: React.FC = () => {
                 </a>
 
                 <a
+                  href={`tel:${data.contactInfo.phone || '+918113014526'}`}
+                  className="w-11 h-11 rounded-full bg-[#0b0b18] border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-purple-600/30 hover:border-purple-500/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.4)] transition-all hover:scale-110"
+                  aria-label="Direct Phone"
+                  title={`Call Athif (${data.contactInfo.phone || '8113014526'})`}
+                >
+                  <Phone className="w-5 h-5" />
+                </a>
+
+                <a
+                  href={`https://wa.me/${(data.contactInfo.phone || '8113014526').replace(/\D/g, '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 rounded-full bg-[#0b0b18] border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-emerald-600/30 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all hover:scale-110"
+                  aria-label="WhatsApp"
+                  title="WhatsApp Athif"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                </a>
+
+                <a
                   href={`mailto:${data.contactInfo.email}`}
                   className="w-11 h-11 rounded-full bg-[#0b0b18] border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-cyan-600/30 hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all hover:scale-110"
                   aria-label="Direct Email"
-                  title="Direct Email (athifeeeafkp@gmail.com)"
+                  title={`Direct Email (${data.contactInfo.email})`}
                 >
                   <Mail className="w-5 h-5" />
                 </a>
@@ -184,27 +209,40 @@ export const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Neon Framed Send a Message Card */}
+          {/* Right Column: Neon Framed Send a Message Card - Upgraded Model & Style */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-3xl p-[2px] bg-gradient-to-br from-purple-500 via-indigo-500 to-cyan-400 shadow-[0_0_40px_rgba(168,85,247,0.35)]">
-              <div className="w-full h-full bg-[#070714] rounded-[22px] p-6 sm:p-10 backdrop-blur-2xl">
-                {/* Form Header */}
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-purple-950/60 border border-purple-500/40 flex items-center justify-center">
-                    <Send className="w-5 h-5 text-cyan-400" />
+            <div className="relative rounded-3xl p-[1.5px] bg-gradient-to-tr from-purple-500 via-indigo-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.35),0_0_70px_rgba(56,189,248,0.25)]">
+              <div className="w-full h-full bg-[#070718] rounded-[22px] p-6 sm:p-10 backdrop-blur-2xl relative overflow-hidden">
+                {/* Decorative neon ambient gradient */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+
+                {/* Form Header with Status Indicator */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-5 border-t-0 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-purple-600 to-cyan-500 p-[1.5px] shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                      <div className="w-full h-full bg-[#080816] rounded-[14px] flex items-center justify-center">
+                        <Send className="w-5 h-5 text-cyan-300" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-2xl sm:text-3xl font-black text-white">
+                        Send a{' '}
+                        <span className="font-script text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+                          Message
+                        </span>
+                      </h3>
+                      <p className="text-xs text-gray-400 mt-0.5">
+                        Drop your project brief or inquiry below.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-2xl sm:text-3xl font-black text-white">
-                      Send a{' '}
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
-                        Message
-                      </span>
-                    </h3>
+
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-400/30 text-cyan-300 text-[11px] font-bold self-start sm:self-auto backdrop-blur-md">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(56,189,248,0.8)] animate-pulse" />
+                    <span>DIRECT INBOX</span>
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm text-gray-400 mb-8 ml-1">
-                  Drop your message, and I’ll get back to you soon.
-                </p>
 
                 {submitted ? (
                   <div className="py-12 flex flex-col items-center text-center animate-in fade-in duration-300">
@@ -325,33 +363,46 @@ export const Contact: React.FC = () => {
         </div>
 
         {/* Bottom Contact Status Strip Matching Reference */}
-        <div className="mt-16 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-3 p-4 rounded-2xl bg-[#090914]/60 border border-white/5">
-            <Clock className="w-5 h-5 text-purple-400 shrink-0" />
+        <div className="mt-16 pt-8 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-3 p-4 rounded-2xl bg-[#090914]/60 border border-white/5 hover:border-purple-500/30 transition-all">
+            <Phone className="w-5 h-5 text-purple-400 shrink-0" />
             <div>
-              <p className="text-xs text-gray-400">Response Time</p>
-              <p className="text-sm font-bold text-white">{data.contactInfo.responseSpeed}</p>
+              <p className="text-xs text-gray-400">Direct Phone</p>
+              <a
+                href={`tel:${data.contactInfo.phone || '+918113014526'}`}
+                className="text-sm font-bold text-white hover:text-purple-300 transition-colors"
+              >
+                {data.contactInfo.phone || '+91 8113014526'}
+              </a>
             </div>
           </div>
 
-          <div className="flex items-center justify-center md:justify-start gap-3 p-4 rounded-2xl bg-[#090914]/60 border border-white/5">
+          <div className="flex items-center justify-center md:justify-start gap-3 p-4 rounded-2xl bg-[#090914]/60 border border-white/5 hover:border-cyan-500/30 transition-all">
             <Mail className="w-5 h-5 text-cyan-400 shrink-0" />
             <div>
               <p className="text-xs text-gray-400">Direct Email</p>
               <a
                 href={`mailto:${data.contactInfo.email}`}
-                className="text-sm font-bold text-white hover:text-cyan-300 transition-colors"
+                className="text-sm font-bold text-white hover:text-cyan-300 transition-colors truncate max-w-[170px] inline-block"
               >
                 {data.contactInfo.email}
               </a>
             </div>
           </div>
 
-          <div className="flex items-center justify-center md:justify-start gap-3 p-4 rounded-2xl bg-[#090914]/60 border border-white/5">
+          <div className="flex items-center justify-center md:justify-start gap-3 p-4 rounded-2xl bg-[#090914]/60 border border-white/5 hover:border-indigo-500/30 transition-all">
+            <Clock className="w-5 h-5 text-indigo-400 shrink-0" />
+            <div>
+              <p className="text-xs text-gray-400">Response Time</p>
+              <p className="text-sm font-bold text-white">{data.contactInfo.responseSpeed}</p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center md:justify-start gap-3 p-4 rounded-2xl bg-[#090914]/60 border border-white/5 hover:border-pink-500/30 transition-all">
             <Sparkles className="w-5 h-5 text-pink-400 shrink-0" />
             <div>
               <p className="text-xs text-gray-400">Creative Philosophy</p>
-              <p className="text-sm font-bold text-white">Let's Create Something Great</p>
+              <p className="text-sm font-bold text-white">Let's Create Great Work</p>
             </div>
           </div>
         </div>

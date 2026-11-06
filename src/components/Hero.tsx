@@ -113,13 +113,13 @@ export const Hero: React.FC = () => {
               {data.brand.heroDesc}
             </p>
 
-            {/* Dual Action Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            {/* Dual Action Buttons with Micro-Interactions */}
+            <div className="mt-8 flex flex-wrap items-center gap-4 animate-fade-slide-up">
               <button
                 onClick={() => handleScrollTo('services')}
-                className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 shadow-[0_0_25px_rgba(168,85,247,0.45)] hover:shadow-[0_0_35px_rgba(56,189,248,0.65)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+                className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 shadow-[0_0_25px_rgba(168,85,247,0.45)] hover:shadow-[0_0_35px_rgba(56,189,248,0.65)] transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer interactive-tap"
               >
-                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Play className="w-3 h-3 text-white fill-white ml-0.5" />
                 </div>
                 <span>Explore Services</span>
@@ -127,7 +127,7 @@ export const Hero: React.FC = () => {
 
               <button
                 onClick={() => handleScrollTo('contact')}
-                className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-gray-300 hover:text-white bg-[#0f0f1b]/80 border border-white/10 hover:border-cyan-500/50 backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(56,189,248,0.2)] cursor-pointer"
+                className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-gray-300 hover:text-white bg-[#0f0f1b]/80 border border-white/10 hover:border-cyan-500/50 backdrop-blur-md transition-all duration-200 hover:shadow-[0_0_20px_rgba(56,189,248,0.2)] hover:scale-105 active:scale-95 cursor-pointer interactive-tap"
               >
                 <span>Get In Touch</span>
                 <ArrowRight className="w-4 h-4 text-cyan-400 group-hover:translate-x-1 transition-transform" />
@@ -143,19 +143,19 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Visual Portrait with Premium Cinematic Studio Treatment */}
+          {/* Right Visual Portrait with Premium Cinematic Studio Treatment (Resized & Animated) */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
             {/* Soft Purple & Cyan Atmospheric Studio Glow Behind Subject */}
-            <div className="absolute inset-0 max-w-[460px] max-h-[540px] mx-auto rounded-3xl bg-gradient-to-br from-purple-600/30 via-indigo-600/25 to-cyan-500/25 blur-3xl -z-10" />
+            <div className="absolute inset-0 max-w-[370px] max-h-[440px] mx-auto rounded-3xl bg-gradient-to-br from-purple-600/30 via-indigo-600/25 to-cyan-500/25 blur-3xl -z-10 animate-pulse-glow" />
 
-            {/* Premium Portrait Card */}
-            <div className="relative w-full max-w-[440px] sm:max-w-[480px] aspect-[3/4] rounded-3xl p-[1.5px] bg-gradient-to-tr from-purple-500 via-indigo-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.35),0_0_80px_rgba(56,189,248,0.2)]">
+            {/* Premium Portrait Card - Compact, Balanced & Smoothly Animated */}
+            <div className="relative w-full max-w-[340px] sm:max-w-[370px] lg:max-w-[390px] aspect-[3/4] rounded-3xl p-[1.5px] bg-gradient-to-tr from-purple-500 via-indigo-500 to-cyan-400 shadow-[0_0_40px_rgba(168,85,247,0.35),0_0_60px_rgba(56,189,248,0.2)] animate-float-slow">
               {/* Inner Cutout Card */}
               <div className="w-full h-full rounded-[22px] overflow-hidden relative bg-[#050509]">
                 <img
                   src={data.brand.heroPortrait}
                   alt="Athif - Creative Studio"
-                  className="w-full h-full object-cover object-top filter contrast-[1.03] brightness-[1.01]"
+                  className="w-full h-full object-cover object-top filter contrast-[1.03] brightness-[1.01] transition-transform duration-700 hover:scale-105"
                 />
 
                 {/* Subtle Cinematic Atmospheric Lighting & Dark Bottom Gradient */}
@@ -163,15 +163,15 @@ export const Hero: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/15 via-transparent to-cyan-500/15 pointer-events-none" />
 
                 {/* Elegant "AVAILABLE FOR PROJECTS" Badge near bottom */}
-                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between pointer-events-none">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#050509]/85 backdrop-blur-md border border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#050509]/85 backdrop-blur-md border border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
                     <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(56,189,248,0.9)] animate-pulse" />
-                    <span className="text-[11px] font-bold text-gray-200 tracking-wider uppercase">
+                    <span className="text-[10px] font-bold text-gray-200 tracking-wider uppercase">
                       AVAILABLE FOR PROJECTS
                     </span>
                   </div>
 
-                  <div className="px-2.5 py-1 rounded-full bg-purple-950/60 border border-purple-500/30 text-[10px] font-semibold text-purple-300 backdrop-blur-md">
+                  <div className="px-2 py-0.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-[9px] font-semibold text-purple-300 backdrop-blur-md">
                     CREATIVE LEAD
                   </div>
                 </div>
@@ -179,23 +179,23 @@ export const Hero: React.FC = () => {
 
               {/* Floating Creative Accent 1: Editing Clapperboard (Top Right) */}
               <div
-                className="absolute -top-3.5 -right-3.5 p-3 rounded-2xl bg-[#080816]/95 border border-purple-500/40 backdrop-blur-xl shadow-[0_0_25px_rgba(168,85,247,0.45)] transition-transform duration-300 hover:scale-110"
+                className="absolute -top-3.5 -right-3.5 p-3 rounded-2xl bg-[#080816]/95 border border-purple-500/40 backdrop-blur-xl shadow-[0_0_25px_rgba(168,85,247,0.45)] transition-all duration-300 hover:scale-115 animate-float-reverse cursor-pointer"
                 title="Cinematic Video Editing"
               >
-                <Clapperboard className="w-5 h-5 text-purple-400" />
+                <Clapperboard className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
               </div>
 
               {/* Floating Creative Accent 2: Play Button (Bottom Right) */}
               <div
-                className="absolute -bottom-3.5 -right-3.5 p-3 rounded-2xl bg-[#080816]/95 border border-cyan-400/40 backdrop-blur-xl shadow-[0_0_25px_rgba(56,189,248,0.45)] transition-transform duration-300 hover:scale-110"
+                className="absolute -bottom-3.5 -right-3.5 p-3 rounded-2xl bg-[#080816]/95 border border-cyan-400/40 backdrop-blur-xl shadow-[0_0_25px_rgba(56,189,248,0.45)] transition-all duration-300 hover:scale-115 animate-float-slow cursor-pointer"
                 title="Creative Motion & Video"
               >
-                <Play className="w-5 h-5 text-cyan-400 fill-cyan-400/20" />
+                <Play className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 fill-cyan-400/20" />
               </div>
 
               {/* Floating Creative Accent 3: Camera Icon (Top Left) */}
               <div
-                className="absolute top-8 -left-4 p-2.5 rounded-2xl bg-[#080816]/95 border border-purple-400/30 backdrop-blur-xl shadow-[0_0_20px_rgba(168,85,247,0.3)] hidden sm:block transition-transform duration-300 hover:scale-110"
+                className="absolute top-8 -left-4 p-2.5 rounded-2xl bg-[#080816]/95 border border-purple-400/30 backdrop-blur-xl shadow-[0_0_20px_rgba(168,85,247,0.3)] hidden sm:block transition-all duration-300 hover:scale-115 animate-float-reverse cursor-pointer"
                 title="Visual Photography & Art Direction"
               >
                 <Camera className="w-4 h-4 text-indigo-300" />

@@ -124,6 +124,7 @@ export interface CreativeStudioData {
   process: ProcessStep[];
   contactInfo: {
     email: string;
+    phone: string;
     pinterest: string;
     responseSpeed: string;
     socials: {

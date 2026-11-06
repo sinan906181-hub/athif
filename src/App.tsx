@@ -8,7 +8,7 @@ import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { AdminPortal } from './components/AdminPortal';
-import { ServiceDetailModal } from './components/Modals';
+import { ServiceDetailModal, SkillDetailModal } from './components/Modals';
 import { ToastContainer } from './components/Toast';
 
 function AppContent() {
@@ -63,6 +63,7 @@ function AppContent() {
 
       {/* Detail Modals */}
       <ServiceDetailModal />
+      <SkillDetailModal />
 
       {/* Secret Admin Portal — Hidden until Ctrl+Shift+S */}
       <AdminPortal />

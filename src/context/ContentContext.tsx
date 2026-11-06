@@ -76,6 +76,8 @@ interface ContentContextType {
   setSelectedServiceModal: (service: ServiceItem | null) => void;
   selectedPortfolioModal: PortfolioProject | null;
   setSelectedPortfolioModal: (project: PortfolioProject | null) => void;
+  selectedSkillModal: ToolSkill | null;
+  setSelectedSkillModal: (skill: ToolSkill | null) => void;
 }
 
 const STORAGE_KEY = 'athif_creative_studio_v7_cinematic_photo';
@@ -110,11 +112,22 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
             },
             services: parsed.services || initialStudioData.services,
             portfolio: parsed.portfolio || initialStudioData.portfolio,
-            skills: parsed.skills || initialStudioData.skills,
+            skills: initialStudioData.skills.map((initSkill) => {
+              const found = parsed.skills?.find((s: any) => s.id === initSkill.id);
+              return found ? { ...initSkill, ...found } : initSkill;
+            }).concat(
+              (parsed.skills || []).filter(
+                (s: any) => !initialStudioData.skills.some((init) => init.id === s.id)
+              )
+            ),
             stats: parsed.stats || initialStudioData.stats,
             whyChooseMe: parsed.whyChooseMe || initialStudioData.whyChooseMe,
             messages: parsed.messages || initialStudioData.messages,
-            activityLog: parsed.activityLog || initialStudioData.activityLog,
+            contactInfo: {
+              ...initialStudioData.contactInfo,
+              ...(parsed.contactInfo || {}),
+              phone: parsed.contactInfo?.phone || initialStudioData.contactInfo.phone,
+            },
             settings: { ...initialStudioData.settings, ...(parsed.settings || {}) },
             appearance: { ...initialStudioData.appearance, ...(parsed.appearance || {}) },
             security: { ...initialStudioData.security, ...(parsed.security || {}) },
@@ -132,6 +145,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedServiceModal, setSelectedServiceModal] = useState<ServiceItem | null>(null);
   const [selectedPortfolioModal, setSelectedPortfolioModal] = useState<PortfolioProject | null>(null);
+  const [selectedSkillModal, setSelectedSkillModal] = useState<ToolSkill | null>(null);
 
   useEffect(() => {
     try {
@@ -620,6 +634,8 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setSelectedServiceModal,
         selectedPortfolioModal,
         setSelectedPortfolioModal,
+        selectedSkillModal,
+        setSelectedSkillModal,
       }}
     >
       {children}
